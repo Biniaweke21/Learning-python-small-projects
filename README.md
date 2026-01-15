@@ -1,0 +1,1 @@
+This repository contains small Python programs I wrote while learning core Python concepts such as loops, conditionals, functions, and input handling. Each folder represents a focused exercise or mini-project.
