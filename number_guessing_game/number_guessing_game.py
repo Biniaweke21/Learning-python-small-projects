@@ -2,14 +2,14 @@ import random
 
 def guessing_game(secret_number):
 
-    counter = 0
+    counter = 0   # variable to hold number of tries
 
     while True:
         counter += 1
 
         user_input = input("Enter Number: ")
         
-        if not user_input.isdigit():
+        if not user_input.isdigit():                  # clause to validate user input
             print("Number not valid. Please enter a valid number.")
             continue
 
@@ -31,7 +31,7 @@ while True:
 
     random_number = random.randint(1, 100)
     guessing_game(random_number)
-    try_again = str(input("Do you want to Play Again? (Y/N): "))
+    try_again = str(input("Do you want to Play Again? (Y/N): ")) # asking for replay
 
     answer = try_again.lower()
 
