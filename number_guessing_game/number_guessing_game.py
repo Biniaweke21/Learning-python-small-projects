@@ -2,7 +2,10 @@ import random
 
 def guessing_game(secret_number):
 
+    counter = 0
+
     while True:
+        counter += 1
 
         guessed_number = int(input("Enter Number: "))
 
@@ -14,6 +17,7 @@ def guessing_game(secret_number):
             
         else:
             print("Yay, you found the number!")
+            print(f"You found it in {counter} tries!")
             break
 
 
