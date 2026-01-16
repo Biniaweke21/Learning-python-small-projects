@@ -16,12 +16,18 @@ def guessing_game(secret_number):
             print("Too high, guess lower: ")
             
         else:
-            print("Yay, you found the number!")
-            print(f"You found it in {counter} tries!")
+            print(f"Yay! you found the correct number! The number is {secret_number}")
+            print(f"It took you {counter} tries to get it")
             break
 
+            
+while True:
+    
+    random_number = random.randint(1, 100)
+    guessing_game(random_number)
+    try_again = str(input("Do you want to Play Again? (Y/N): "))
 
-random_number = random.randint(1, 100)
+    if try_again != "y":
+        break
 
-guessing_game(random_number)
 
