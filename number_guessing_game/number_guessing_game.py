@@ -7,7 +7,13 @@ def guessing_game(secret_number):
     while True:
         counter += 1
 
-        guessed_number = int(input("Enter Number: "))
+        user_input = input("Enter Number: ")
+        
+        if not user_input.isdigit():
+            print("Number not valid. Please enter a valid number.")
+            continue
+
+        guessed_number = int(user_input)
 
         if secret_number > guessed_number:
             print("Too low, guess higher: ")
@@ -22,12 +28,14 @@ def guessing_game(secret_number):
 
             
 while True:
-    
+
     random_number = random.randint(1, 100)
     guessing_game(random_number)
     try_again = str(input("Do you want to Play Again? (Y/N): "))
 
-    if try_again != "y":
+    answer = try_again.lower()
+
+    if answer != "y":
         break
 
 
