@@ -9,11 +9,11 @@ def todo_func(menu_choice, todo_list):
     elif menu_choice == 2:
         print("Tasks you have in your list are: ")
         print(" ")
-        for index, item in enumerate(todo_list):
+        for index, item in enumerate(todo_list, start=1):
                 print(index,",", item)
     else: 
         while True:    
-            for index, item in enumerate(todo_list):
+            for index, item in enumerate(todo_list, start=1):
                 print(index,",", item)
             user_input = input("choose which task you want to mark as done: ")
 
@@ -22,8 +22,8 @@ def todo_func(menu_choice, todo_list):
                 continue
 
             mark_done = int(user_input)
-            print(f"You have removed {todo_list[mark_done]} from you tasks. ")
-            todo_list.pop(mark_done)
+            print(f"You have removed {todo_list[mark_done-1]} from you tasks. ")
+            todo_list.pop(mark_done-1)
             break
 
             
