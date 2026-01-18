@@ -4,12 +4,32 @@ def todo_func(menu_choice, todo_list):
     if menu_choice== 1:
         added_task = input("Write the task you want to add: ")
         todo_list.append(added_task)
-
+        print(" ")
         print(f"You have added {added_task} to your list, Thankyou")
     elif menu_choice == 2:
-        print(todo_list)
-    else:
-        print("you chose to mark task as done")
+        print("Tasks you have in your list are: ")
+        print(" ")
+        for index, item in enumerate(todo_list):
+                print(index,",", item)
+    else: 
+        while True:    
+            for index, item in enumerate(todo_list):
+                print(index,",", item)
+            user_input = input("choose which task you want to mark as done: ")
+
+            if  not user_input.isdigit():
+                print("Please Enter a Valid Number")
+                continue
+
+            mark_done = int(user_input)
+            print(f"You have removed {todo_list[mark_done]} from you tasks. ")
+            todo_list.pop(mark_done)
+            break
+
+            
+
+       
+
      
         
 
