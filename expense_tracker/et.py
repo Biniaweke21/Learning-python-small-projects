@@ -7,11 +7,16 @@ def add_expense(expense_list, total_expense):
 
         if not user_value.isdigit():
             print("""The expense value needs to be a number: 
-                  
                   """)
             continue
+        
 
         expense_value = int(user_value)
+
+        if expense_value <= 0:
+            print("""The expense should be greater than 0: 
+                  """)
+            continue
 
         total_expense += expense_value
 
@@ -28,8 +33,9 @@ def view_all(expense_list):
         print("There is no expenses to show")
         return
 
-    for index, items in expense_list:
-        print("Expense:",index,",", items)
+    for index, item in enumerate(expense_list, start=1):
+        print(f"Expense {index}: {item[0]} , {item[1]}")
+
 
 
 def view_total(expense_list, total_expense):    
