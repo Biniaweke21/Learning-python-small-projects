@@ -6,7 +6,7 @@ def todo_func(menu_choice, todo_list):
     elif menu_choice == 2:
         view_task(todo_list)
     else: 
-        if len(todo_list) ==0:
+        if not todo_list:
             print("Your to do lost is Empty. ")
             return
         else:
@@ -20,6 +20,10 @@ def add_task(todo_list):
         
         
 def view_task(todo_list):
+    if not todo_list:
+        print("Your todo list is empty: please add tasks")
+        return
+        
     print("Tasks you have in your list are: ")
     print(" ")
     for index, item in enumerate(todo_list, start=1):
