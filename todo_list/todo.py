@@ -2,17 +2,28 @@ todo_list = []
 
 def todo_func(menu_choice, todo_list):
     if menu_choice== 1:
-        added_task = input("Write the task you want to add: ")
-        todo_list.append(added_task)
-        print(" ")
-        print(f"You have added {added_task} to your list, Thankyou")
+        add_task(todo_list)
     elif menu_choice == 2:
-        print("Tasks you have in your list are: ")
-        print(" ")
-        for index, item in enumerate(todo_list, start=1):
-                print(index,",", item)
+        view_task(todo_list)
     else: 
-        while True:    
+        mark_done_func(todo_list)
+
+def add_task(todo_list):
+    added_task = input("Write the task you want to add: ")
+    todo_list.append(added_task)
+    print(" ")
+    print(f"You have added {added_task} to your list, Thankyou")
+        
+        
+def view_task(todo_list):
+    print("Tasks you have in your list are: ")
+    print(" ")
+    for index, item in enumerate(todo_list, start=1):
+                print(index,",", item)
+
+
+def mark_done_func(todo_list):
+    while True:    
             for index, item in enumerate(todo_list, start=1):
                 print(index,",", item)
             user_input = input("choose which task you want to mark as done: ")
@@ -22,11 +33,15 @@ def todo_func(menu_choice, todo_list):
                 continue
 
             mark_done = int(user_input)
+            
+            if mark_done > len(todo_list) or mark_done <=0:
+                print("Please Enter a Valid Number")
+                continue
+                
+            
             print(f"You have removed {todo_list[mark_done-1]} from you tasks. ")
             todo_list.pop(mark_done-1)
             break
-
-            
 
        
 
@@ -57,4 +72,3 @@ while True:
         todo_func(menu_choice, todo_list)
     else:
         break
-
