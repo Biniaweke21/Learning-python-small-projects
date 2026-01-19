@@ -6,7 +6,11 @@ def todo_func(menu_choice, todo_list):
     elif menu_choice == 2:
         view_task(todo_list)
     else: 
-        mark_done_func(todo_list)
+        if len(todo_list) ==0:
+            print("Your to do lost is Empty. ")
+            return
+        else:
+            mark_done_func(todo_list)
 
 def add_task(todo_list):
     added_task = input("Write the task you want to add: ")
