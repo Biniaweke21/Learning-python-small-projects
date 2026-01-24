@@ -1,35 +1,61 @@
 import re
 
-def min_length_check(user_input):
-    if len(user_input) < 8:
-        print("your password is too weak/ must be 8 charachters or longer.")
-        return
-    
-def 
-    if not re.search(r"\d", user_input):
-        print("Your password is too weak/ does not contain numbers must contain numbers.")
-        return
-        
+def min_length_check(password):
+    return len(password) >= 8
 
-    pattern = r'[^\w\s]' 
+def num_check(password):
+    return re.search(r"\d", password) is not None
 
-    if not re.search(pattern, user_input):
-        print("Your password is to weak/ does not contain symbol must contain characters.")
-        return
+def char_check(password):
+    return re.search(r"[^a-zA-Z0-9\s]", password) is not None
 
-    if not any(upper_case.isupper() for upper_case in user_input):
-        print("Your password is too weak/ does not contain upper case letter. you need atleast one upper case")
+def upper_check(password):
+    return any(c.isupper() for c in password)
 
-    if not any(upper_case.islower() for upper_case in user_input):
-        print("Your password is too weak/ does not contain lower case letter. you need atleast one lower case")
+def lower_check(password):
+    return any(c.islower() for c in password)
+
+
+def strength_check(password):
+
+    rules = [
+        (min_length_check, "at least 8 characters"),
+        (num_check, "a number"),
+        (char_check, "a special character"),
+        (upper_check, "an uppercase letter"),
+        (lower_check, "a lowercase letter"),
+    ]
+
+    passed = 0
+    failed_reasons = []
+
+    for check_func, message in rules:
+        if check_func(password):
+            passed += 1
+        else:
+            failed_reasons.append(message)
+
+    if passed == 5:
+        print("Password strength: STRONG")
+    elif passed >= 3:
+        print("Password strength: MEDIUM")
+    else:
+        print("Password strength: WEAK")
+
+    if failed_reasons:
+        print("Missing:")
+        for reason in failed_reasons:
+            print("-", reason)
+
 
 def main():
     while True:
-        user_input = input("Enter your password: ")
+        user_input = input("Enter your password (or 'n' to exit): ")
 
-        min_length_check(user_input)
-
-        if  user_input == 'n':
+        if user_input == 'n':
             break
+
+        strength_check(user_input)
+
 
 main()
