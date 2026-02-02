@@ -1,9 +1,25 @@
 def registration(pass_holder):
-    user_name = input("Enter a user name: ")
-    password = input("Enter your password: ")
+    while True:
+        user_name = input("Enter a user name: ")
+        password = input("Enter your password: ")
 
-    pass_holder.update({user_name : password})
-    print("Registration Successful Thankyou! ")
+        if user_name in pass_holder:
+            print("Username already exist")
+            choice = input("Do you want to: \n" 
+            "1, Try another UserName?\n " 
+            "2, Go back to the main menu: ")
+            choice1 = int(choice)
+            if choice1 == 1:
+                continue
+            elif choice1 == 2:
+                break
+            else:
+                print("Wrong choice going back to the main menu...")
+                break
+        else:
+            pass_holder.update({user_name : password})
+            print("Registration Successful Thankyou! ")
+            break
 
 def login(pass_holder):
 
